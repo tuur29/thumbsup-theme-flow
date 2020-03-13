@@ -39,4 +39,19 @@ $(document).ready(function() {
         rowHeight: 165,
         maxRowHeight: "150%",
     });
+
+    // Remember scroll position
+    if (window.location.hash) {
+        // Scroll to previous place
+        const distance = parseInt(window.location.hash.slice(1));
+        setTimeout(() => {
+            if (distance) {
+                window.scrollTo({top: distance, behavior: "auto"});
+            }
+        }, 250);
+    }
+    // Put scroll position in history so page can scroll down when going back
+    setInterval(() => {
+        history.replaceState({}, window.title, "#"+(window.pageYOffset || window.scrollY));
+    }, 1500);
 });
