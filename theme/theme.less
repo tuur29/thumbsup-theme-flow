@@ -131,9 +131,12 @@ nav.breadcrumbs a {
 #albums a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  display: inline-block;
   overflow: hidden;
   background-size: cover;
+
+  &:not(.jg-filtered) {
+    display: inline-block;
+  }
 }
 
 .caption {
@@ -197,4 +200,17 @@ nav.breadcrumbs a {
 // Override justifiedGallery animation
 .justified-gallery .entry-visible img {
   transition: opacity 150ms !important;
+}
+
+// Filter field
+#filter {
+	position: absolute;
+	top: 0;
+	right: 0;
+  width: 165px;
+  margin: 1.25em;
+  padding: 0.4em;
+  background: #222;
+  border-color: #111;
+  color: #eee;
 }
