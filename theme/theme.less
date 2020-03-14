@@ -297,15 +297,29 @@ nav.breadcrumbs a {
   }
 }
 
-// Filter field
-#filter {
+// Controls
+#controls {
 	position: absolute;
 	top: 0;
-	right: 0;
-  width: 165px;
+  right: 0;
   margin: 1.25em;
-  padding: 0.4em;
-  background: #222;
-  border-color: #111;
-  color: #eee;
+  
+  > * {
+    margin: 0 .3em;
+  }
+
+  #filter {
+    width: 165px;
+    padding: 0.4em;
+    background: #222;
+    border-color: #111;
+    color: #eee;
+  }
+  
+  #randomize {
+    background: #222;
+    color: #ddd;
+    border-color: #111;
+    padding: 0.4em 0.6em;
+  }
 }
