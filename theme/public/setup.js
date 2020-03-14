@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $("#media").lightGallery({
-        thumbWidth: 80,
         controls: true,
         loop : false,
         download: true,
@@ -10,15 +9,17 @@ $(document).ready(function() {
         // Custom options
         mode: 'lg-slide',
         speed: 200,
-        hideBarsDelay: 4500,
+        hideBarsDelay: 3000,
         closable: false,
         hideControlOnEnd: true,
         preload: 2,
         swipeThreshold: 30,
+        getCaptionFromTitleOrAlt: false,
         // Custom plugin options
-        thumbContHeight: 168,
+        thumbContHeight: 120,
         thumbWidth: 100,
         showThumbByDefault: false,
+        videoMaxWidth: 'initial',
         pause: 3000,
         zoom: true,
         scale: 0.5,
@@ -75,6 +76,12 @@ $(document).ready(function() {
     setInterval(function() {
         const offset = window.pageYOffset || window.scrollY;
         const filter = document.querySelector('#filter').value;
-        history.replaceState({offset: offset, filter: filter}, window.title, '#' + offset + '|' + filter);
+        if (offset || filter || window.location.hash) {
+            history.replaceState(
+                {offset: offset, filter: filter},
+                window.title,
+                '#' + offset + '|' + filter
+            );
+        }
     }, 1500);
 });
