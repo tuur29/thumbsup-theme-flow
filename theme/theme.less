@@ -186,14 +186,17 @@ nav.breadcrumbs a {
   height: calc(100% - 100px);
 	padding: 0 20px;
   background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
 
   &.lg-prev {
     left: 0;
-    padding-right: 50px;
+    padding-right: 30px;
   }
   &.lg-next {
     right: 0;
-    padding-left: 50px;
+    padding-left: 30px;
   }
 }
 
@@ -226,6 +229,7 @@ nav.breadcrumbs a {
   height: 1.65em;
   background: #222;
   color: #888;
+  border-top-left-radius: 10px;
 }
 
 .lg-outer .lg-thumb-outer {
@@ -240,57 +244,75 @@ nav.breadcrumbs a {
   border-color: #eee;
 }
 
+// Add padding in video player for thumb toggle
+.video-js:not(.vjs-fullscreen) .vjs-control-bar {
+  padding-right: 50px;
+}
+
 // Change videoplayer controls (based on videojs/sea theme)
 @bar-increment: rgba(180, 180, 180, 0.15);
 .lg-video {
+
+  .vjs-tech {
+    outline: 0;
+  }
+
   .vjs-big-play-button {
-    background-color: rgba(255, 255, 255, 0.25) !important;
+    background-color: rgba(180, 180, 180, 0.5) !important;
     border: none;
   }
-  
+
+  .vjs-paused .vjs-big-play-button {
+    display: block;
+  }
+
   .vjs-control-bar {
     height: 4em;
     background-color: rgba(0, 0, 0, 0.5);
-    padding-right: 50px;
   }
-  
+
   .vjs-button:hover {
     color: #aaa;
     background-color: rgba(0, 0, 0, 0.3);
   }
-  
+
   .vjs-button > .vjs-icon-placeholder::before {
     line-height: 2.2;
   }
-  
+
   .vjs-time-control {
     line-height: 4em;
   }
-  
+
   .vjs-progress-control .vjs-play-progress {
     background-color: @bar-increment;
   }
-  
+
   .vjs-progress-control .vjs-play-progress:before {
-    display: none;
+    content: "";
+    background: #888;
+    width: 1px;
+    top: 0;
+    right: 0;
+    height: 100%;
   }
-  
+
   .vjs-progress-control .vjs-slider {
     background-color: transparent;
   }
-  
+
   .vjs-progress-control .vjs-load-progress {
     > div {
       background-color: @bar-increment;
     }
     background-color: @bar-increment;
   }
-  
+
   .vjs-progress-control .vjs-progress-holder {
     margin: 0;
     height: 100%;
   }
-  
+
   .vjs-progress-control .vjs-time-tooltip {
     background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
@@ -315,7 +337,7 @@ nav.breadcrumbs a {
     border-color: #111;
     color: #eee;
   }
-  
+
   #randomize {
     background: #222;
     color: #ddd;

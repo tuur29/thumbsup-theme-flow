@@ -12,6 +12,16 @@ function getSeededRandom() {
     return min + rnd * (max - min);
 }
 
+function doubleClickHandler(event) {
+    let change = 0;
+    if (event.screenX < window.innerWidth / 2) { // left, back
+        change = -30;
+    } else {
+        change = 30;
+    }
+    this.currentTime(this.currentTime() + change);
+}
+
 $(document).ready(function() {
     let initialized = false;
 
@@ -29,14 +39,25 @@ $(document).ready(function() {
         closable: false,
         hideControlOnEnd: true,
         preload: 2,
-        swipeThreshold: 30,
+        swipeThreshold: 40,
         getCaptionFromTitleOrAlt: false,
-        // Custom plugin options
+        videojsOptions: {
+            fluid: true,
+            userActions: { touchStart: doubleClickHandler }, // TODO: doubleClick event is doesn't work on mobile
+            controlBar: {
+                volumePanel: {
+                    inline: false
+                }
+            }
+        },
+        share: false,
+        pager: false,
+        hash: false,
         thumbContHeight: 120,
         thumbWidth: 100,
         showThumbByDefault: false,
         videoMaxWidth: 'initial',
-        pause: 3000,
+        pause: 5000,
         zoom: true,
         scale: 0.5,
     });
@@ -144,7 +165,7 @@ $(document).ready(function() {
             setTimeout(function(){
                 if (scrollOffset) window.scrollTo({ top: scrollOffset });
                 initialized = true;
-            }, 50);
+            }, 250);
         }
     });
 });
